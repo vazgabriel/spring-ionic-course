@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gabrielcvaz.cursomc.domain.Estado;
-import com.gabrielcvaz.cursomc.domain.Estado;
 import com.gabrielcvaz.cursomc.repositories.EstadoRepository;
 import com.gabrielcvaz.cursomc.services.exceptions.ObjectNotFoundException;
 
