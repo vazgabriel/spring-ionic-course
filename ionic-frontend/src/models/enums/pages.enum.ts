@@ -1,4 +1,5 @@
 export enum Pages {
   Home = "HomePage",
-  Categorias = "CategoriasPage"
+  Categorias = "CategoriasPage",
+  Profile = "ProfilePage"
 }

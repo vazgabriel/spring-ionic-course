@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 
 import { AuthService } from '../services/auth.service';
 import { CategoriaService } from './../services/domain/categoria.service';
+import { ClienteService } from './../services/domain/cliente.service';
 import { StorageService } from './../services/storage.service';
 
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -30,6 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     AuthService,
     CategoriaService,
+    ClienteService,
     ErrorInterceptorProvider,
     SplashScreen,
     StatusBar,
