@@ -8,6 +8,7 @@ import { API_CONFIG } from './../config/api.config';
 import { CredenciaisDTO } from "../models/credenciais.dto";
 import { LocalUser } from './../models/local_user';
 
+import { CartService } from './cart.service';
 import { StorageService } from './storage.service';
 
 @Injectable()
@@ -15,12 +16,27 @@ export class AuthService {
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(public http: HttpClient, public storage: StorageService){}
+  constructor(
+    public cartService: CartService,
+    public http: HttpClient,
+    public storage: StorageService
+  ){}
 
   authenticate(creds: CredenciaisDTO): Observable<HttpResponse<string>> {
     return this.http.post(
       `${API_CONFIG.baseUrl}/login`,
       creds,
+      {
+        observe: 'response',
+        responseType: 'text'
+      }
+    );
+  }
+
+  refreshToken(): Observable<HttpResponse<string>> {
+    return this.http.post(
+      `${API_CONFIG.baseUrl}/auth/refresh_token`,
+      {},
       {
         observe: 'response',
         responseType: 'text'
@@ -36,6 +52,7 @@ export class AuthService {
     };
 
     this.storage.setLocalUser(user);
+    this.cartService.createOrClearCart();
   }
 
   logout(): void {

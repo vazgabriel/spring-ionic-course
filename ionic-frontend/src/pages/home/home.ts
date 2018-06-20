@@ -24,21 +24,31 @@ export class HomePage {
     public menu: MenuController
   ) {}
 
-  ionViewWillEnter() {
+  ionViewWillEnter(): void {
     this.menu.swipeEnable(false);
   }
 
-  ionViewDidLeave() {
+  ionViewDidEnter(): void {
+    this.authService.refreshToken()
+      .subscribe(response => {
+        this.authService.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot(Pages.Categorias);
+      }, error => {});
+  }
+
+  ionViewDidLeave(): void {
     this.menu.swipeEnable(true);
   }
 
-  login() {
+  login(): void {
     this.authService.authenticate(this.creds)
       .subscribe(response => {
         this.authService.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot(Pages.Categorias);
-      }, error => {
+      }, error => {});
+  }
 
-      });
+  signup(): void {
+    this.navCtrl.push(Pages.Signup);
   }
 }

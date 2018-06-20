@@ -1,5 +1,12 @@
 export enum Pages {
-  Home = "HomePage",
+  Cart = "CartPage",
   Categorias = "CategoriasPage",
-  Profile = "ProfilePage"
+  Home = "HomePage",
+  OrderConfirmation = "OrderConfirmationPage",
+  Payment = "PaymentPage",
+  PickAddress = "PickAddressPage",
+  Produtos = "ProdutosPage",
+  ProdutoDetail = "ProdutoDetailPage",
+  Profile = "ProfilePage",
+  Signup = "SignupPage",
 }

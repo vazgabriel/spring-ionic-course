@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from './../../config/api.config';
 
 import { ClienteDTO } from './../../models/cliente.dto';
+import { Pages } from './../../models/enums/pages.enum';
 
 import { ClienteService } from './../../services/domain/cliente.service';
 import { StorageService } from './../../services/storage.service';
@@ -30,10 +31,16 @@ export class ProfilePage {
 
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)
-        .subscribe((response: ClienteDTO) => {
-          this.cliente = response;
+        .subscribe(response => {
+          this.cliente = response as ClienteDTO;
           this.getImageIfExists();
-        }, error => {});
+        }, error => {
+          if (error.status == 403) {
+            this.navCtrl.setRoot(Pages.Home);
+          }
+        });
+    } else {
+      this.navCtrl.setRoot(Pages.Home);
     }
   }
 
