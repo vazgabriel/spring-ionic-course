@@ -1,5 +1,6 @@
 package com.gabrielcvaz.cursomc.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class ProdutoResource {
 		String nomeDecoded = URL.decodeParam(nome);
 		
 		// Getting Ids
-		List<Integer> ids = URL.decodeIntList(categorias);
+		List<Integer> ids = URL.decodeIntList(categorias);	
 		
 		Page<Produto> list = service.search(nomeDecoded, ids, page, linesPerPage, orderBy, direction);
 		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));
