@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { CartService } from './../services/cart.service';
 import { CategoriaService } from './../services/domain/categoria.service';
 import { ClienteService } from './../services/domain/cliente.service';
+import { ImageUtilService } from './../services/image-util.service';
 import { ProdutoService } from './../services/domain/produto.service';
 import { StorageService } from './../services/storage.service';
 
@@ -40,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CartService,
     CategoriaService,
     ClienteService,
+    ImageUtilService,
     ProdutoService,
     SplashScreen,
     StatusBar,

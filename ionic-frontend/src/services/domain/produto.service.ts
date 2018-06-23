@@ -10,9 +10,9 @@ import { ProdutoDTO } from "../../models/produto.dto";
 export class ProdutoService {
   constructor(public http: HttpClient) {}
 
-  findByCategoria(categoriaId: string): Observable<any> {
+  findByCategoria(categoriaId: string, page: number = 0, linesPerPage: number = 24): Observable<any> {
     return this.http.get(
-      `${API_CONFIG.baseUrl}/produtos/?categorias=${categoriaId}`
+      `${API_CONFIG.baseUrl}/produtos/?categorias=${categoriaId}?page=${page}?linesPerPage=${linesPerPage}`
     );
   }
 
